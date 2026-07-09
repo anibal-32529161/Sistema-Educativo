@@ -1,9 +1,9 @@
 <?php
-$host =  getenv('BD_HOST');
-$dbname   = getenv('BD_NAME');
-$user = getenv('BD_USER');
-$password = getenv('BD_PASS');
-$port = getenv('BD_PORT');
+$host =  $_ENV['DB_HOST'];
+$dbname   =$_ENV['DB_NAME'];
+$user = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
+$port = $_ENV['DB_PORT'];
 
 $enlace = mysqli_connect($host, $user, $password, $dbname, $port);
 if (!$enlace){
@@ -12,12 +12,12 @@ if (!$enlace){
 }
 try {
     // Conectar sin especificar base de datos para poder crearla si no existe
-    $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $password);
+    $pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Crear la base de datos si no existe
-    $pdo->exec("CREATE DATABASE IF NOT EXISTS `$db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
-    $pdo->exec("USE `$db`");
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS `$dbname` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+    $pdo->exec("USE `$dbname`");
 
     // Crear tablas si no existen
     $pdo->exec("
