@@ -9,4 +9,8 @@ COPY . /app
 # Set working directory
 WORKDIR /app
 
+# Expose port 8080
+EXPOSE 8080
 
+# Start FrankenPHP
+CMD frankenphp run --listen", "0.0.0.0:8080
