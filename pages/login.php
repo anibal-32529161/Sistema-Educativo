@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <video autoplay muted loop playsinline id="bg-video">
-        <source src="../assets/images/6.mp4" type="video/mp4">
+        <source src="../assets/images/1.jpg" type="video/mp4">
     </video>
     <div class="video-overlay"></div>
 
