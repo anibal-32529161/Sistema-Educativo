@@ -1,7 +1,7 @@
 FROM dunglas/frankenphp:php8.4.23-bookworm
 
 # Install pdo_mysql and mysqli extensions
-RUN docker-php-ext-install pdo_mysql mysqli
+RUN docker-php-ext-install mysqli pdo_mysql 
 
 # Copy application files
 COPY . /app
@@ -13,4 +13,4 @@ WORKDIR /app
 EXPOSE 8080
 
 # Start FrankenPHP
-CMD ["frankenphp", "php-server", "--listen", "0.0.0.0:8080"]
+CMD ["frankenphp", "run", "--listen", "0.0.0.0:8080"]
