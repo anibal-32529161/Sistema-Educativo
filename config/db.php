@@ -1,12 +1,13 @@
 <?php
-$host = 'localhost';
-$db   = 'sistema_academico';
-$user = 'root';
-$pass = '';
+$host = getenv('DB_HOST') ?: 'localhost';
+$port = getenv('DB_PORT') ?: '3306';
+$db   = getenv('DB_NAME') ?: 'sistema_academico';
+$user = getenv('DB_USER') ?: 'root';
+$pass = getenv('DB_PASS') ?: '';
 
 try {
     // Conectar sin especificar base de datos para poder crearla si no existe
-    $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;port=$port;charset=utf8mb4", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Crear la base de datos si no existe
