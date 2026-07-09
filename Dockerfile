@@ -13,4 +13,4 @@ WORKDIR /app
 EXPOSE 8080
 
 # Start FrankenPHP
-CMD ["frankenphp", "run", "--bind", "0.0.0.0:8080"]
+CMD ["frankenphp", "run", "--listen", "0.0.0.0:8080"]
