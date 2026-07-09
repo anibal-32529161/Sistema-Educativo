@@ -1,12 +1,18 @@
 <?php
-$host = 'localhost';
-$db   = 'sistema_academico';
-$user = 'root';
-$pass = '';
+$host =  getenv('BD_HOST');
+$dbname   = getenv('BD_NAME');
+$user = getenv('BD_USER');
+$password = getenv('BD_PASS');
+$port = getenv('BD_PORT');
 
+$enlace = mysqli_connect($host, $user, $password, $dbname, $port);
+if (!$enlace){
+    die("Error de Conexion; ".
+    mysqli_connect_error());
+}
 try {
     // Conectar sin especificar base de datos para poder crearla si no existe
-    $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;charset=utf8mb4", $user, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Crear la base de datos si no existe
